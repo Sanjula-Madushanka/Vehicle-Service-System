@@ -1,0 +1,112 @@
+
+.edit-container {
+    padding: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+ 
+  .logo {
+    width: 150px;
+    height: auto;
+  }
+  
+
+  .edit-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .edit-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  
+  .input-field {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  
+  .flex-wrap-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  
+  .flex-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: start;
+  }
+  
+ 
+  .upload-container {
+    margin-top: 15px;
+  }
+  
+  .upload-label {
+    font-weight: 600;
+  }
+  
+  .upload-hint {
+    font-weight: 400;
+    color: #666;
+  }
+  
+  .file-upload {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .upload-button {
+    padding: 10px;
+    background-color: #38a169;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .upload-button:hover {
+    background-color: #2f855a;
+  }
+  
+ 
+  .submit-button {
+    padding: 15px;
+    background-color: #2d3748;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #1a202c;
+  }
+  

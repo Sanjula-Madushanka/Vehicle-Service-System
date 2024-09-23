@@ -1,0 +1,142 @@
+
+.package-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.package-item {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.package-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.package-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+
+.package-item h3 {
+    font-size: 1.3em;
+    margin: 15px 20px;
+    color: #333;
+}
+
+.package-item p {
+    font-size: 1em;
+    margin: 10px 20px;
+    color: #666;
+}
+
+.package-item p.price {
+    font-weight: bold;
+    color: #000;
+    margin-top: 5px;
+}
+
+.package-item p.special-offer {
+    color: #e63946;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.package-item p.services {
+    font-style: italic;
+    color: #555;
+}
+
+
+.package-item .cta-button {
+    display: block;
+    text-align: center;
+    margin: 20px;
+    padding: 12px 25px;
+    background-color: #1d4ed8;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.package-item .cta-button:hover {
+    background-color: #1e40af;
+}
+.print-button {
+    padding: 10px 20px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .print-button:hover {
+    background-color: #003f8a;
+  }
+
+.search-input {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-button {
+    padding: 8px 12px;
+    margin-left: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .package-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .package-item h3 {
+    color: #333;
+  }
+  
+  .print-button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  
+  .print-button:hover {
+    background-color: #45a049;
+  }
