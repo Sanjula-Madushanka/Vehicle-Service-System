@@ -81,7 +81,7 @@
   
   .upload-button {
     padding: 10px;
-    background-color: #38a169;
+    background-color: #383aa1;
     color: white;
     border: none;
     border-radius: 5px;
@@ -96,7 +96,7 @@
  
   .submit-button {
     padding: 15px;
-    background-color: #2d3748;
+    background-color: #045efa;
     color: white;
     border: none;
     border-radius: 8px;
@@ -107,6 +107,6 @@
   }
   
   .submit-button:hover {
-    background-color: #1a202c;
+    background-color: #1055df;
   }
   

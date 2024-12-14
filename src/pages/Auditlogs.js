@@ -1,7 +1,11 @@
 import React from 'react'
 
-export default function Auditlogs() {
+function Auditlogs() {
   return (
-    <div>Auditlogs</div>
+    <div>
+      mokuth natho
+    </div>
   )
 }
+
+export default Auditlogs

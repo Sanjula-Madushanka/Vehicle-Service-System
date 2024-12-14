@@ -1,4 +1,3 @@
-
 .creation-container {
   padding: 20px;
   max-width: 700px;
@@ -8,19 +7,16 @@
   align-items: center;
 }
 
-
 .logo-container {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
 }
 
-
 .logo {
   width: 200px;
   height: auto;
 }
-
 
 .creation-title {
   font-size: 2.5rem;
@@ -28,7 +24,6 @@
   text-align: center;
   margin-bottom: 30px;
 }
-
 
 .creation-form {
   width: 100%;
@@ -45,13 +40,11 @@
   width: 100%;
 }
 
-
 .flex-wrap-container {
   display: flex;
   gap: 20px;
   justify-content: space-between;
 }
-
 
 .flex-item {
   display: flex;
@@ -59,7 +52,6 @@
   flex: 1;
   align-items: start;
 }
-
 
 .upload-container {
   margin-top: 15px;
@@ -93,7 +85,6 @@
   background-color: #2f855a;
 }
 
-
 .submit-button {
   padding: 15px;
   background-color: #2d3748;
@@ -109,3 +100,4 @@
 .submit-button:hover {
   background-color: #1a202c;
 }
+

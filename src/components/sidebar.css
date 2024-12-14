@@ -1,18 +1,13 @@
-/* Sidebar container */
+/* Sidebar Container */
 .sidebar {
-  position: fixed; /* Keeps the sidebar in place */
-  top: 0;
-  left: 0;
-  height: 100vh; /* Full viewport height */
-  width: 250px; /* Fixed width for the sidebar */
-  background-color: #3490dc; /* Blue background */
+  width: 250px;
+  background-color: #3f8ded;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  height: 100%;
   overflow-y: auto; /* Allows scrolling if content overflows */
-  z-index: 1000; /* Ensure it stays above other elements */
 }
 
 /* Profile Section */
@@ -22,47 +17,57 @@
   align-items: center;
 }
 
-.profile-img {
-  width: 100px;
-  height: 100px;
+.profile-pic {
+  width: 120px;
+  height: 120px; /* Ensures the photo remains circular */
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 
-/* Navigation Links */
-.nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 20px; /* Space between buttons */
+/* Sidebar Menu */
+.sidebar-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.nav-button {
-  padding: 10px 15px;
-  background-color: white;
-  color: black;
-  text-align: left;
-  border: 1px solid black;
-  border-radius: 7px;
-  width: 100%;
+.sidebar-menu li {
+  margin-bottom: 20px;
+}
+
+.sidebar-menu li a {
+  display: block;
   text-decoration: none;
-}
-
-.nav-button:hover {
-  background-color: #e2e8f0; /* Light grey on hover */
-}
-
-/* Signout button */
-.signout-button {
+  font-size: 16px;
   padding: 10px 20px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: auto; /* Pushes button to the bottom */
+  border: 2px solid #000000; /* Black border for all options */
+  border-radius: 12px; /* Rounded corners */
+  text-align: center;
+  color: #000000; /* Default text color */
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.signout-button:hover {
-  background-color: #2d3748; /* Dark grey on hover */
+.sidebar-menu li a.active {
+  color: #b30000; /* Darker red color for active menu item */
+}
+
+.sidebar-menu li a:hover {
+  background-color: #e6e6e6; /* Light gray background on hover */
+  color: #000000; /* Ensure text color changes on hover */
+}
+
+/* Sign Out Button */
+.signout-btn {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: auto;
+}
+
+.signout-btn:hover {
+  background-color: #2d3748; /* Darker background on hover */
 }

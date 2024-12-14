@@ -81,7 +81,7 @@ h1 {
 }
 
 .edit-button {
-  background-color: #030b30;
+  background-color: #0835ff;
   color: white;
 }
 
@@ -90,10 +90,58 @@ h1 {
 }
 
 .delete-button {
-  background-color: #a71b1bbb;
+  background-color: #ec0f0fbb;
   color: white;
 }
 
 .delete-button:hover {
   background-color: #e90c60ea;
+}
+
+
+
+
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.confirm-button {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.confirm-button:hover, .cancel-button:hover {
+  opacity: 0.8;
 }

@@ -2,23 +2,27 @@ import '../Styles/EditPackage.css';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../assets/micro-automotive-logo.png'; // Import the logo
 
 export default function EditPackage({ onPackageUpdated }) {
-  const { id } = useParams();
+  const { id } = useParams(); 
   const [packageData, setPackageData] = useState({
     packageName: '',
     description: '',
-    price: '',
+    price: '',  
     specialOffer: '',
     servicesIncluded: '',
   });
-
+  
   useEffect(() => {
     const fetchPackage = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/packages/${id}`);
-        setPackageData(response.data.package);
+        const fetchedPackage = response.data.package;  
+        setPackageData({
+          ...fetchedPackage,
+          price: fetchedPackage.price !== undefined ? String(fetchedPackage.price) : '',  
+          specialOffer: fetchedPackage.specialOffer !== undefined ? String(fetchedPackage.specialOffer) : '', 
+        });
       } catch (error) {
         console.error("Error fetching package data", error);
       }
@@ -26,33 +30,73 @@ export default function EditPackage({ onPackageUpdated }) {
     fetchPackage();
   }, [id]);
 
-  const handleChange = (e) => {
-    setPackageData({
-      ...packageData,
-      [e.target.id]: e.target.value,
-    });
+  // Formatter for numbers with commas (e.g., 10,000)
+  const formatPrice = (value) => {
+    const numericValue = value.replace(/,/g, ''); // Remove commas for the numeric value
+    if (!isNaN(numericValue) && numericValue !== '') {
+      return new Intl.NumberFormat('en-IN').format(numericValue); // Add commas back
+    }
+    return value;
   };
+
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+
+    if (id === "price" || id === "specialOffer") {
+      const numericValue = value.replace(/,/g, ''); // Remove commas for processing
+      if (/^[0-9]*$/.test(numericValue) && numericValue <= 1000000) { // Max price limit of 100000
+        setPackageData({
+          ...packageData,
+          [id]: formatPrice(numericValue), // Format value with commas
+        });
+      }
+    } else if (id === "packageName" || id === "description" || id === "servicesIncluded") {
+      // Allow only letters and spaces
+      if (/^[a-zA-Z\s]*$/.test(value)) {
+        setPackageData({
+          ...packageData,
+          [id]: value,
+        });
+      }
+    } else {
+      setPackageData({
+        ...packageData,
+        [id]: value,
+      });
+    }
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formattedData = {
+      ...packageData,
+      price: typeof packageData.price === 'string' ? packageData.price.replace(/,/g, '') : '',
+      specialOffer: typeof packageData.specialOffer === 'string' ? packageData.specialOffer.replace(/,/g, '') : '',
+    };
+
+    const priceValue = parseFloat(formattedData.price);
+    const specialOfferValue = parseFloat(formattedData.specialOffer);
+
+    if (specialOfferValue > priceValue) {
+      alert("Special offer cannot exceed the price.");
+      return;
+    }
+
     try {
-      await axios.put(`http://localhost:5000/packages/${id}`, packageData);
-      onPackageUpdated(); 
+      await axios.put(`http://localhost:5000/packages/${id}`, formattedData);
+      onPackageUpdated();
       alert("Package updated successfully!");
     } catch (error) {
       console.log("Error updating package", error);
     }
   };
-
+  
   return (
     <main className="edit-container">
-
-      <div className="logo-container">
-        <img src={logo} alt="Micro Automotive Logo" className="logo" />
-      </div>
       <h1 className="edit-title">Edit Package</h1>
       
-   
       <form className="edit-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -84,34 +128,31 @@ export default function EditPackage({ onPackageUpdated }) {
         <div className="flex-wrap-container">
           <div className="flex-item">
             <input
-              type="number"
-              step="0.01"
+              type="text"
               id="price"
               value={packageData.price}
               onChange={handleChange}
-              min="0.01"
-              max="10000"
+              maxLength="7"
               required
               className="input-field"
-              placeholder="Price"
+              placeholder="Price (₨)"
             />
-            <p>Price ($ / package)</p>
+            <p>Price (₨ / package)</p>
           </div>
           <div className="flex-item">
             <input
-              type="number"
-              step="0.01"
+              type="text"
               id="specialOffer"
               value={packageData.specialOffer}
               onChange={handleChange}
-              min="0.00"
-              max="10000"
+              maxLength="7"
               className="input-field"
               placeholder="Special Offer (optional)"
             />
-            <p>Special Offer ($ / package)</p>
+            <p>Special Offer (₨ / package)</p>
           </div>
         </div>
+
         <button className="submit-button" type="submit">
           Update Package
         </button>

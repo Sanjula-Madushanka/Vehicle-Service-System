@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import '../Styles/PDetails.css';
+import '../Styles/Details.css';
 
-const URL = "http://localhost:5000/packages";
-
-export default function PDetails() {
-  const [packages, setPackages] = useState([]);
+export default function Details() {
+  const location = useLocation();
   const navigate = useNavigate();
+  const { package: pkg } = location.state;
 
+  const [packages, setPackages] = useState([]);
+  const [selectedPackage, setSelectedPackage] = useState(pkg); // State to store the selected package
+  const URL = "http://localhost:5000/packages";
+
+  // Fetch packages from backend
   const fetchPackages = async () => {
     try {
       const response = await axios.get(URL);
@@ -22,63 +26,49 @@ export default function PDetails() {
     fetchPackages();
   }, []);
 
+  const handleBookNow = () => {
+    navigate('/p8', { state: { package: selectedPackage } });
+  };
+
   const handlePackageClick = (pkg) => {
-    navigate('/p7', { state: { package: pkg } }); // Navigate to /p7 with the selected package
+    setSelectedPackage(pkg); // Update the selected package when clicked
   };
 
   return (
-    <div className='pdetails'>
+    <div className="details-container">
       {/* Hero Section */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title"> Service    Packages</h1>
-          <p className="hero-subtitle">Choose the package that suits your vehicle's needs.</p>
-          <button className="hero-btn" onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}>
-            Explore Packages
-          </button>
-        </div>
-      </section>
-
-
-{/* Packages Section */}
-<div className="packages-section">
-  <div className="packages-header-container">
-    <h2 className="packages-header1">Available</h2>
-    <h2 className="packages-header2">Packages</h2>
-  </div>
-  <div className="packages-list">
-    {packages.map((pkg, index) => (
-      <div key={index} className="package-name" onClick={() => handlePackageClick(pkg)}>
-        {pkg.packageName} {/* Display package name as clickable */}
+      <div className="hero-section">
+        <h2 className="package-title">{selectedPackage.packageName}</h2>
       </div>
-    ))}
-  </div>
-</div>
 
+      {/* Package Details */}
+      <div className="package-details">
+        <p><strong>Description:</strong> {selectedPackage.description}</p>
+        <p><strong>Services Included:</strong> {selectedPackage.servicesIncluded}</p>
+        <p><strong>Price:</strong> ₨{selectedPackage.price}</p>
+        <p><strong>Special Offer:</strong> ₨{selectedPackage.specialOffer}</p>
+        <p><strong>Total Price:</strong> ₨{selectedPackage.price - selectedPackage.specialOffer}</p>
+        <button className="book-now-button" onClick={handleBookNow}>
+          Book Now
+        </button>
+      </div>
 
-
-
-
-
-{/* Introduction Section */}
-<div className="introduction-section">
-      <h2>OUR SERVICES</h2>
-      <p>
-        We are a full-service vehicle care station dedicated to providing top-notch services to keep your vehicle running smoothly. 
-        With a team of experienced mechanics and a wide range of service packages, we ensure the highest level of quality and customer satisfaction.
-      </p>
-      <p>
-        Whether you need a quick wash, routine maintenance, or extensive repairs, we’ve got you covered. Choose a package that fits your needs, 
-        and let our team handle the rest!
-      </p>
-    </div>
-
-
-
-
-
-
-
+      {/* Packages Section */}
+      <div className="packages-section">
+        <div className="packages-header-container">
+          <h2 className="packages-header1">Available</h2>
+          <h2 className="packages-header2">Packages</h2>
+        </div>
+        <div className="packages-list">
+          {packages.map((pkg, index) => (
+            <div key={index} className="package-name" onClick={() => handlePackageClick(pkg)}>
+              {pkg.packageName}
+            </div>
+          ))}
+        </div>
+      </div>
+    
+      
 <footer className="footer-section">
   <div className="footer-container">
     <div className="footer-column">
@@ -122,32 +112,8 @@ export default function PDetails() {
   </div>
 </footer>
 
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
     </div>
   );
 }
+    
+    

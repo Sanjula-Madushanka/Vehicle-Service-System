@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../Styles/Dashboard.css';
-import logo from '../assets/micro-automotive-logo.png'; // Import logo
+
 import packageCreationIcon from '../assets/package-creation-icon.png';
 import packageMaintenanceIcon from '../assets/package-maintenance-icon.png';
 import packagesIcon from '../assets/packages-icon.png';
-import auditLogsIcon from '../assets/audit-logs-icon.png';
+//import auditLogsIcon from '../assets/audit-logs-icon.png';
 
 export default function Dashboard() {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <img src={logo} alt="Micro Automotive Logo" className="dashboard-logo" />
+       {/* <img src={logo} alt="Micro Automotive Logo" className="dashboard-logo" />
+       import logo from '../assets/micro-automotive-logo.png'; // Import logo */} 
         <h1 className="dashboard-title">Manager Dashboard</h1>
       </header>
 
@@ -36,13 +37,14 @@ export default function Dashboard() {
             <p>Packages</p>
           </div>
         </Link>
-
+        {/*
         <Link to="/p1" className="card-link">
           <div className="card">
             <img src={auditLogsIcon} alt="Audit Logs" className="card-icon" />
             <p>Audit Logs</p>
           </div>
         </Link>
+        */}
       </div>
     </div>
   );

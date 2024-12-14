@@ -8,10 +8,15 @@
 }
 
 body {
-  width: 100%;
-  height: 100vh;
-  background-color: #f8f9fa; /* Optional: Set background color if needed */
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Adjust background as needed */
 }
+.container, .page-wrapper, .main-section {
+  border: none;
+  outline: none;
+}
+
 
 /* Flexbox layout for the sidebar and content */
 .app-container {
@@ -32,4 +37,21 @@ body {
   height: 100vh; /* Full viewport height */
   width: 250px; /* Sidebar width */
   background-color: #3490dc; /* Blue background */
+}
+.hero-section, .footer-section, .main-content {
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+img, .hero-image, .section {
+  border: none;
+  outline: none;
+}
+
+.hero-section {
+  border: none; /* Make sure this is set */
+  outline: none;
 }
